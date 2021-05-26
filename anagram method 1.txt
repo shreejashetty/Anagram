@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include<string.h>
+void swap(char *x,char *y)
+{
+ char temp;
+ temp=*x;
+*x=*y;
+*y=temp;   
+}
+void bubble_sort(char a[],int n)
+{
+    int i,j,status;
+  for(i=0;i<n-1;i++)
+    {  status=0;
+        for(j=0;j<n-(i+1);j++)
+        {
+            if(a[j]>a[j+1])
+            {
+            swap(&a[j],&a[j+1]);
+            status=1;
+            }
+        }
+        if(status==0)
+        break;
+    }  
+}
+
+int main()
+{   
+    char s1[100],s2[100];
+    int n,m;
+    printf("Enter two strings\n");
+    scanf("%s%s",s1,s2);
+    m=strlen(s1);
+    n=strlen(s2);
+    bubble_sort(s1,m);
+    bubble_sort(s2,n);
+    if(!strcmp(s1,s2))
+    printf("Angram");
+    else
+    printf(" not Angram");
+    return 0;
+}

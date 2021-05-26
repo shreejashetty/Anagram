@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include<string.h>
+
+int c1[256],c2[256];
+
+void count( char a[],int l,int c[])
+{   
+    int i=0;
+    int x;
+    for(i=0;i<l;i++)
+    {   
+        x=a[i];
+        c[x]=c[x]+1;
+    }
+}
+
+
+int main()
+{   
+    
+    char s1[100],s2[100];
+    int n,m,status,i;
+    printf("Enter two strings\n");
+    scanf("%s%s",s1,s2);
+    m=strlen(s1);
+    n=strlen(s2);
+    
+    count(s1,m,c1);
+    count(s2,n,c2);
+    
+    for(i=0;i<256;i++)
+    {   
+        status=0;
+        if(c1[i]!=c2[i])
+        {
+            status=1;
+            break;
+        }
+    }
+    if(status==0)
+    printf("Anagram");
+    else
+    printf(" Not Anagram");
+    return 0;
+}
